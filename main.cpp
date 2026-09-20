@@ -48,7 +48,7 @@ public:
         }
 
         quantidade++;
-        cout << "\n[SUCESSO] Cliente cadastrado com sucesso!" << endl;
+        cout << "\nCliente cadastrado com sucesso!" << endl;
         cout << "Senha gerada: " << proximaSenha << endl;
         proximaSenha++;
     }
@@ -56,30 +56,28 @@ public:
     // 2. Consultar o próximo cliente sem retirá-lo
     void consultarProximo() const {
         if (estaVazia()) {
-            cout << "\n[AVISO] Não há clientes na fila de espera." << endl;
+            cout << "\nNao ha clientes na fila de espera." << endl;
             return;
         }
 
-        cout << "\n--- PRÓXIMO CLIENTE A SER ATENDIDO ---" << endl;
+        cout << "\nPROXIMO CLIENTE A SER ATENDIDO" << endl;
         cout << "Senha:   " << inicio->senha << endl;
         cout << "Nome:    " << inicio->nome << endl;
-        cout << "Serviço: " << inicio->servico << endl;
+        cout << "Servico: " << inicio->servico << endl;
     }
 
     // 3. Chamar e remover o cliente que está no início da fila
     void atenderCliente() {
         if (estaVazia()) {
-            cout << "\n[AVISO] Não há clientes para atender." << endl;
+            cout << "\nNao ha clientes para atender." << endl;
             return;
         }
 
         Cliente* temp = inicio;
-        cout << "\n==========================================" << endl;
         cout << "CHAMANDO CLIENTE PARA ATENDIMENTO" << endl;
         cout << "Senha:   " << temp->senha << endl;
         cout << "Nome:    " << temp->nome << endl;
-        cout << "Serviço: " << temp->servico << endl;
-        cout << "==========================================" << endl;
+        cout << "Servico: " << temp->servico << endl;
 
         inicio = inicio->proximo;
         delete temp; // Libera a memória do cliente atendido
@@ -95,7 +93,7 @@ public:
     // 4. Buscar um cliente pelo número da senha, sem alterar a fila
     void buscarPorSenha(int senhaBusca) const {
         if (estaVazia()) {
-            cout << "\n[AVISO] A fila está vazia." << endl;
+            cout << "\nA fila esta vazia." << endl;
             return;
         }
 
@@ -104,32 +102,32 @@ public:
 
         while (atual != nullptr) {
             if (atual->senha == senhaBusca) {
-                cout << "\n--- CLIENTE ENCONTRADO ---" << endl;
+                cout << "\nCLIENTE ENCONTRADO" << endl;
                 cout << "Senha:             " << atual->senha << endl;
                 cout << "Nome:              " << atual->nome << endl;
-                cout << "Serviço:           " << atual->servico << endl;
-                cout << "Posição na Fila:   " << posicao << "º da fila" << endl;
+                cout << "Servico:           " << atual->servico << endl;
+                cout << "Posicao na Fila:   " << posicao << ".o da fila" << endl;
                 return;
             }
             atual = atual->proximo;
             posicao++;
         }
 
-        cout << "\n[ERRO] Senha " << senhaBusca << " não foi encontrada na fila." << endl;
+        cout << "\nSenha " << senhaBusca << " nao foi encontrada na fila." << endl;
     }
 
     // 5. Exibir todos os clientes na ordem de atendimento
     void exibirFila() const {
         if (estaVazia()) {
-            cout << "\n[AVISO] A fila está vazia." << endl;
+            cout << "\nA fila esta vazia." << endl;
             return;
         }
 
-        cout << "\n========= FILA DE ESPERA (" << quantidade << " cliente(s)) =========" << endl;
+        cout << "\nFILA DE ESPERA (" << quantidade << " cliente(s))" << endl;
         Cliente* atual = inicio;
         int i = 1;
         while (atual != nullptr) {
-            cout << i << "º -> [Senha: " << atual->senha 
+            cout << i << ".o -> [Senha: " << atual->senha 
                  << " | Nome: " << atual->nome 
                  << " | Serviço: " << atual->servico << "]" << endl;
             atual = atual->proximo;
@@ -168,23 +166,23 @@ int main() {
 
     do {
         cout << "\n========================================" << endl;
-        cout << "   SISTEMA DE ATENDIMENTO BANCÁRIO" << endl;
+        cout << "          ATENDIMENTO BANCARIO" << endl;
         cout << "========================================" << endl;
-        cout << "1. Gerar Senha (Cadastrar Cliente)" << endl;
-        cout << "2. Chamar Próximo Cliente (Atender)" << endl;
-        cout << "3. Consultar Próximo Cliente (Sem remover)" << endl;
+        cout << "1. Gerar Senha" << endl;
+        cout << "2. Chamar Proximo Cliente" << endl;
+        cout << "3. Consultar Proximo Cliente" << endl;
         cout << "4. Buscar Cliente por Senha" << endl;
         cout << "5. Exibir Fila de Atendimento" << endl;
         cout << "6. Exibir Quantidade de Clientes Aguardando" << endl;
         cout << "0. Sair" << endl;
-        cout << "Escolha uma opção: ";
+        cout << "Escolha uma opcao: ";
         cin >> opcao;
 
         // Trata entradas inválidas no cin
         if (cin.fail()) {
             cin.clear();
             cin.ignore(10000, '\n');
-            cout << "\n[ERRO] Por favor, digite um número válido." << endl;
+            cout << "\nPor favor, digite um numero valido." << endl;
             continue;
         }
 
@@ -208,7 +206,7 @@ int main() {
                 break;
             case 4: {
                 int senha;
-                cout << "Digite o número da senha a buscar: ";
+                cout << "Digite o numero da senha a buscar: ";
                 cin >> senha;
                 fila.buscarPorSenha(senha);
                 break;
@@ -223,7 +221,7 @@ int main() {
                 cout << "\nEncerrando o programa..." << endl;
                 break;
             default:
-                cout << "\n[ERRO] Opção inválida! Tente novamente." << endl;
+                cout << "\nOpção invalida! Tente novamente." << endl;
                 break;
         }
     } while (opcao != 0);
