@@ -11,7 +11,7 @@ struct Cliente {
     Cliente* proximo;
 
     Cliente(int s, std::string n, std::string sv) 
-        : senha(s), nome(n), servico(sv), proximo(nullptr) {}
+        : senha(s), nome(n), servico(sv), proximo(nullptr)
 };
 
 // Classe para gerenciar a Fila de Atendimento Bancário
