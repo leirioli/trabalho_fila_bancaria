@@ -8,7 +8,7 @@ FilaBanco::FilaBanco() {
     inicio = nullptr;
     fim = nullptr;
     quantidade = 0;
-    proximaSenha = 1; // Senhas iniciam em 1
+    proximaSenha = 1; //Senhas iniciam em 1
 }
 
 // Destrutor
